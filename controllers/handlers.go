@@ -20,7 +20,8 @@ var key = os.Getenv("JWT_KEY")
 
 // Welcome verify if jwt is valid
 func Welcome(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("todo gucci"))
+	username := r.Context().Value("username").(string)
+	w.Write([]byte("Hola " + username))
 }
 
 // Signin get a jwt
