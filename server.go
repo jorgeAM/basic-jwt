@@ -5,12 +5,10 @@ import (
 	"net/http"
 
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/jorgeAM/jwt/handlers"
+	"github.com/jorgeAM/jwt/routes"
 )
 
 func main() {
-	http.HandleFunc("/signin", handlers.Signin)
-	http.HandleFunc("/welcome", handlers.Welcome)
-
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	r := routes.InitializeRoutes()
+	log.Fatal(http.ListenAndServe(":8000", r))
 }
