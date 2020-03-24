@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -15,11 +16,11 @@ var Users = map[string]string{
 	"user2": "password2",
 }
 
-const key = "s3cr37"
+var key = os.Getenv("JWT_KEY")
 
 // Welcome verify if jwt is valid
 func Welcome(w http.ResponseWriter, r *http.Request) {
-
+	w.Write([]byte("todo gucci"))
 }
 
 // Signin get a jwt
